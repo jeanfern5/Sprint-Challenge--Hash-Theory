@@ -33,6 +33,9 @@ char **reconstruct_trip(Ticket **tickets, int length)
     }
   }
 
+  //free ht after tickets are sorted
+  destroy_hash_table(ht);
+
   return route;
 }
 
