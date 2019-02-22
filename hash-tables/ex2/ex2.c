@@ -9,7 +9,29 @@ char **reconstruct_trip(Ticket **tickets, int length)
   HashTable *ht = create_hash_table(16);
   char **route = malloc(length * sizeof(char *));
 
-  // YOUR CODE HERE
+  //iterate throught tickets
+  for (int i = 0; i < length; i++)
+  {
+    //adding key/value pairs into ht
+    hash_table_insert(ht, tickets[i]->source, tickets[i]->destination);
+  }
+
+  //iterate through tickets
+  for (int i = 0; i < length; i++)
+  {
+    //looking for starting flight with key "NONE"
+    if (i == 0)
+    {
+      route[0] = hash_table_retrieve(ht, "NONE");
+      // printf("Source:%s Destination:%s\n", tickets[i]->source, route[0]); //sanity check
+    }
+    //looking for next flights
+    else
+    {
+      route[i] = hash_table_retrieve(ht, route[i - 1]);
+      // printf("Source:%s Destination:%s\n", route[i - 1], route[i]); //sanity check
+    }
+  }
 
   return route;
 }
