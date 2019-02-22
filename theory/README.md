@@ -52,7 +52,8 @@ print(table3(0, 1, 1)); #1
 print(table3(1, 0, 0)); #1
 print(table3(1, 0, 1)); #1
 print(table3(1, 1, 0)); #0
-print(table3(1, 1, 1)); #0 -->
+print(table3(1, 1, 1)); #0 
+-->
 
 ## STRETCH GOAL
 
