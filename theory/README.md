@@ -4,40 +4,55 @@
 
 Fill out truth tables for the following expressions:
 
-1. `(A ∧ ¬B)`   (alternate: `(A && !B)`)
+1. `(A ∧ ¬B)`   
+(alternate: `(A && !B)`)
 ```
 A     B     result
 -------------------
-0     0       ?
-0     1       ?
-1     0       ?
-1     1       ?
+0     0       0 && 1 = 0
+0     1       0 && 0 = 0
+1     0       1 && 1 = 1
+1     1       1 && 0 = 0
 ```
 
-2. `(¬A ∨ B) ∧ ¬(A ∧ ¬B)`   (alternate: `(!A || B) && !(A && !B)`)
+2. `(¬A ∨ B) ∧ ¬(A ∧ ¬B)`   
+(alternate: `(!A || B) && !(A && !B)`)
 ```
 A     B     result
 -------------------
-0     0       ?
-0     1       ?
-1     0       ?
-1     1       ?
+0     0       (1 || 0) && !(0 && 1) = 1 && !0 = 1
+0     1       (1 || 1) && !(0 && 0) = 1 && !0 = 1
+1     0       (0 || 0) && !(1 && 1) = 0 && !1 = 0
+1     1       (0 || 1) && !(1 && 0) = 1 && !0 = 1
 ```
 
-3. `¬(A ∧ B) ∨ ( (A ∧ C) ∧ ¬(B ∨ ¬C) )`   (alternate: `!(A && B) || ( (A && C) && !(B || !C) )`)
+3. `¬(A ∧ B) ∨ ( (A ∧ C) ∧ ¬(B ∨ ¬C) )`   
+(alternate: `!(A && B) || ( (A && C) && !(B || !C) )`)
   * (Hint: Is it possible to calculate this using code?)
 ```
 A     B     C     result
 -------------------------
-0     0     0       ?
-0     0     1       ?
-0     1     0       ?
-0     1     1       ?
-1     0     0       ?
-1     0     1       ?
-1     1     0       ?
-1     1     1       ?
+0     0     0       1
+0     0     1       1
+0     1     0       1
+0     1     1       1
+1     0     0       1
+1     0     1       1
+1     1     0       0
+1     1     1       0
 ```
+<!-- 
+def table3(A, B, C):
+	return not (A and B) or ( (A and C) and not (B or not C) )
+
+print(table3(0, 0, 0)); #1 
+print(table3(0, 0, 1)); #1
+print(table3(0, 1, 0)); #1
+print(table3(0, 1, 1)); #1
+print(table3(1, 0, 0)); #1
+print(table3(1, 0, 1)); #1
+print(table3(1, 1, 0)); #0
+print(table3(1, 1, 1)); #0 -->
 
 ## STRETCH GOAL
 
